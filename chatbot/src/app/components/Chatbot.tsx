@@ -151,9 +151,9 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col h-[600px] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-2xl border border-amber-200 dark:border-amber-900/30 overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto flex flex-col h-[600px] bg-linear-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-2xl border border-amber-200 dark:border-amber-900/30 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-amber-600 px-6 py-4 shadow-lg">
+      <div className="bg-linear-to-r from-orange-500 to-amber-600 px-6 py-4 shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
@@ -167,12 +167,14 @@ export default function Chatbot() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
                 />
               </svg>
             </div>
             <div>
-              <h2 className="text-white font-bold text-lg">AI Assistant</h2>
+              <h2 className="text-white font-bold text-lg">
+                📚 Gestor de Libros
+              </h2>
               <p className="text-orange-100 text-xs">
                 {status === "streaming" ? "Escribiendo..." : "En línea"}
               </p>
@@ -210,7 +212,7 @@ export default function Chatbot() {
         <div className="mx-6 mt-4 p-4 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 rounded-lg animate-fadeIn">
           <div className="flex items-start">
             <svg
-              className="w-5 h-5 text-red-500 mt-0.5 mr-3 flex-shrink-0"
+              className="w-5 h-5 text-red-500 mt-0.5 mr-3 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -249,7 +251,7 @@ export default function Chatbot() {
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center">
             <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-amber-500 rounded-full mx-auto flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-linear-to-br from-orange-400 to-amber-500 rounded-full mx-auto flex items-center justify-center shadow-lg">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -265,10 +267,10 @@ export default function Chatbot() {
                 </svg>
               </div>
               <p className="text-gray-500 dark:text-gray-400 font-medium">
-                ¡Comienza una conversación!
+                ¡Gestiona tu biblioteca personal!
               </p>
               <p className="text-gray-400 dark:text-gray-500 text-sm">
-                Escribe un mensaje para empezar
+                Puedo ayudarte a organizar tus libros
               </p>
             </div>
           </div>
@@ -289,10 +291,10 @@ export default function Chatbot() {
               >
                 {/* Avatar */}
                 <div
-                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                  className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                     message.role === "user"
-                      ? "bg-gradient-to-br from-orange-500 to-amber-600 shadow-md"
-                      : "bg-gradient-to-br from-gray-600 to-gray-700 dark:from-gray-700 dark:to-gray-800 shadow-md"
+                      ? "bg-linear-to-br from-orange-500 to-amber-600 shadow-md"
+                      : "bg-linear-to-br from-gray-600 to-gray-700 dark:from-gray-700 dark:to-gray-800 shadow-md"
                   }`}
                 >
                   {message.role === "user" ? (
@@ -323,7 +325,7 @@ export default function Chatbot() {
                 <div
                   className={`rounded-2xl px-4 py-3 shadow-md ${
                     message.role === "user"
-                      ? "bg-gradient-to-br from-orange-500 to-amber-600 text-white rounded-tr-sm"
+                      ? "bg-linear-to-br from-orange-500 to-amber-600 text-white rounded-tr-sm"
                       : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-tl-sm"
                   }`}
                 >
@@ -332,7 +334,7 @@ export default function Chatbot() {
                       part.type === "text" ? (
                         <span
                           key={index}
-                          className="whitespace-pre-wrap break-words"
+                          className="whitespace-pre-wrap wrap-break-word"
                         >
                           {part.text}
                         </span>
@@ -348,7 +350,7 @@ export default function Chatbot() {
         {status === "streaming" && (
           <div className="flex justify-start animate-fadeIn">
             <div className="flex items-start space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-700 dark:from-gray-700 dark:to-gray-800 rounded-full flex items-center justify-center shadow-md">
+              <div className="w-8 h-8 bg-linear-to-br from-gray-600 to-gray-700 dark:from-gray-700 dark:to-gray-800 rounded-full flex items-center justify-center shadow-md">
                 <svg
                   className="w-5 h-5 text-white"
                   fill="currentColor"
@@ -414,7 +416,7 @@ export default function Chatbot() {
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-medium rounded-xl hover:from-orange-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center space-x-2"
+            className="px-6 py-3 bg-linear-to-r from-orange-500 to-amber-600 text-white font-medium rounded-xl hover:from-orange-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center space-x-2"
           >
             {loading ? (
               <>
